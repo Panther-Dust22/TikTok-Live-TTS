@@ -6,21 +6,13 @@ Get it from here: https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injecto
 ```
 
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
-
      ✨         TTS Voice System V5              ✨
-
      ✨                OVERHAUL                  ✨
-
      ✨       ___ __  __    ___ ________         ✨
-
      ✨      | __|  \/  |/\|_  )__ /__ /         ✨
-
-     ✨      | || |\/| >  </ / | \|_ \         ✨
-
+     ✨      | |_| |\/| >  </ / | \|_ \         ✨
      ✨      |___|_|  |_|\//___|___/___/         ✨
-
      ✨💫 Created by Emstar233 & Husband (V5) 💫✨
-
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
 
 ```  
@@ -114,20 +106,11 @@ i have added a couple new things over the previous version including user count,
 Mod commands for stream if enabled, give this list to your mods or add to your Discord.
 
 | Command                  | Format                          | Description                                                     | Example                        |
-
 | ------------------------ | ------------------------------- | --------------------------------------------------------------- | ------------------------------ |
-
 | \*\*Add Voice Mapping\*\*    | `!vadd <name> VOICE \[speed]`    | Assign a specific TTS voice (and optional speed) to a username. | `!vadd John Smith STITCH 1.2`   |
-
 | \*\*Remove Voice Mapping\*\* | `!vremove <name>`               | Remove a stored voice mapping for the user.                     | `!vremove John Smith`          |
-
 | \*\*Change Voice Mapping\*\* | `!vchange <name> VOICE \[speed]` | Update an existing mapping to a new voice (and optional speed). | `!vchange John Smith DEADPOOL 1.5`  |
-
 | \*\*Add Name Swap\*\*        | `!vname <original> - <new>`     | Change how a user’s name is spoken in TTS.                      | `!vname John Smith - The King` |
-
 | \*\*Remove Name Swap\*\*     | `!vnoname <name>`               | Remove a spoken name override.                                  | `!vnoname John Smith`          |
-
 | \*\*Add Rude Words\*\*       | `!vrude <word1> <word2> ...`    | Add words to the rude-word filter. Avoids duplicates.           | `!vrude foo bar baz`           |
-
 | \*\*Emergency shut down\*\*  | `!restart`                      | If enabled in the GUI stops and restarts TTS (clears queue).    | `!restart          `           |
-
