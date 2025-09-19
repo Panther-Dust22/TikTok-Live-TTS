@@ -1,5 +1,6 @@
 Note the BSR injector is no longer bundled with this system.  
 Get it from here: https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector  
+for older versions of TTS see releases here https://github.com/Panther-Dust22/TikTok-Live-TTS-BSR-Injector
 
 ![Header Banner](Images/banner.png)
 
