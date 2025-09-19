@@ -54,7 +54,7 @@ Once finished you can launch the TTS app or close the installer, a shortcut will
 
 ![Installed](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Final.png)
 
-In the GUI are all the buttons, bells and whistles (voices) that you could need.  
+In the GUI are all the buttons, bells and whistles (voices) that you could need. and more, in the top right of the window is a theme button, enjoy :)  
 The left side gives you a command window, an idea of what is going on in the program.  
 
 on the right side at the top you have health status of each module of the system, red means not active or error, green is online and working  
@@ -68,7 +68,7 @@ Specials      : A control panel for default tts speed, default voices for mods, 
 Edit bad reply: Brings up a panel to add or remove filter words and replies  
 Emergency stop: Turn on or off the Mod command to stop tts and reset it if someone is being a prick  
 
-** BSR INJECTOR REMOVED AS ITS NOW STANDALONE **
+** BSR INJECTOR REMOVED AS ITS NOW STANDALONE ** get it here https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector
 
 2nd row is active user control, active users in the last 10 mins are captured and added to this list for voice control
 
@@ -95,16 +95,16 @@ Test API          : Will check the API is working for voices, mostly just use to
 5th row is my information panel, shows next planned update and live information on any bugs found and also gives a link to our discord
 ![user interface](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Mainwindow.png)
 
-Updates: Installer was having issues so I fixed it for you to manualy install Python, it will give you a clickable link, Crash Detector no longer randomly shuts down and makes sure that you are always running!
-New Official BSR plugin for TikTok added, have fun with this streamers.
+Updates: NO MORE PYTHON! this system is built using c#, its faster better stronger and works harder without eating into CPU resources, it has its own installer to guide you through the full setup.  
+i have added a couple new things over the previous version including user count, information panel and themes
 
-Mod commands for stream if enabled
+Mod commands for stream if enabled, give this list to your mods or add to your Discord.
 
 | Command                  | Format                          | Description                                                     | Example                        |
 | ------------------------ | ------------------------------- | --------------------------------------------------------------- | ------------------------------ |
-| \*\*Add Voice Mapping\*\*    | `!vadd <name> VOICE \[speed]`    | Assign a specific TTS voice (and optional speed) to a username. | `!vadd John Smith DITCH 1.2`   |
+| \*\*Add Voice Mapping\*\*    | `!vadd <name> VOICE \[speed]`    | Assign a specific TTS voice (and optional speed) to a username. | `!vadd John Smith STITCH 1.2`   |
 | \*\*Remove Voice Mapping\*\* | `!vremove <name>`               | Remove a stored voice mapping for the user.                     | `!vremove John Smith`          |
-| \*\*Change Voice Mapping\*\* | `!vchange <name> VOICE \[speed]` | Update an existing mapping to a new voice (and optional speed). | `!vchange John Smith HILLARY`  |
+| \*\*Change Voice Mapping\*\* | `!vchange <name> VOICE \[speed]` | Update an existing mapping to a new voice (and optional speed). | `!vchange John Smith DEADPOOL 1.5`  |
 | \*\*Add Name Swap\*\*        | `!vname <original> - <new>`     | Change how a user’s name is spoken in TTS.                      | `!vname John Smith - The King` |
 | \*\*Remove Name Swap\*\*     | `!vnoname <name>`               | Remove a spoken name override.                                  | `!vnoname John Smith`          |
 | \*\*Add Rude Words\*\*       | `!vrude <word1> <word2> ...`    | Add words to the rude-word filter. Avoids duplicates.           | `!vrude foo bar baz`           |
