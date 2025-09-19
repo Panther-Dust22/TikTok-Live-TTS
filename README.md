@@ -4,83 +4,50 @@ get it from here https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector
 ![Header Banner](Images/banner.png)
 
 
-:---:
 ```
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
-     ✨         TTS Voice System V4.6            ✨
+     ✨         TTS Voice System V5              ✨
      ✨                OVERHAUL                  ✨
      ✨       ___ __  __    ___ ________         ✨
      ✨      | __|  \/  |/\|_  )__ /__ /         ✨
      ✨      | _|| |\/| >  </ / |_ \|_ \         ✨
      ✨      |___|_|  |_|\//___|___/___/         ✨
-     ✨💫Created by Emstar233 & Husband (V4.6)💫✨
+     ✨💫 Created by Emstar233 & Husband (V5) 💫✨
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
 ```  
 
 
-Thanks for downloading the new Overhauled version of out TTS
+Thanks for downloading the new Overhauled version of our TTS
 
 We have tried to make this as user friendly as possible,
 but there may still be glitches and bugs, feel free to report these
 
 you can discuss this program and its features or code on our Discord
 
-               https://discord.gg/PVvv8M5e83
+https://discord.gg/PVvv8M5e83
 
 we are always active and ready to help you with any issues.
 
-             \*\*..................Why did we make this?...............…\*\*
-
-
-Originally Emstar wanted to be able to accept bsr codes in Beatsaber while streaming on TikTok,
-she asked and begged and annoyed her Husband until he gave in and built a bypass,
-program that passes all messages from TikTok to Twitch, this started off in Streamer.Bot
-it worked but it was unreliable so he built a version 2 using an internet browser and some JS
-then she discovered TTS and wanted her own, so using some code found online he built one for her
-this was version 2, then with some tweaks and added extras like more voices, mod commands and so on
-he built version 2.5 and released it to everyone on GitHub.
-
-Not being happy with editing txt files to change settings and the complexity of the setup,
-the people began to form a mob with pitchforks and fire, they would scream and shout for an update,
-but not as loud as Emstar, so he created v3 that didn't get to see a release, that cleaned up the
-setup process and the settings issue, Emstar was silenced but the people still roared for an update.
-
-with a week to spare and a laptop strapped to his face Husband began to code, hours went past,
-slowly turning to days, and then a week had arrived, with a test stream behind him and bugs
-found that needed to be squashed he set aside a couple extra days and
-handcuffed himself to the sofa and laptop.
-
-2 days pass with 2 and 3AM bed times and it was finally here, with the next day spent tweaking,
-Version 4, a complete overhaul, A rustic user interface, automatic moderator commands, simple,
-elegant, idiot proof, a shining beacon of what someone that cant code for shit can do, turning no skill into....
-
-
-
-                  **.....The TTS BSR Injector V4 Overhaul edition....**
+         
+**.....The TTS BSR Injector V4 Overhaul edition....**
 
 Install instructions.
 
-**Previous bsr tts users**
-copy all your old txt files and put them in this folder with the installer and convert file
-Run Install which will make sure you have the correct Python version and all the requirements needed for this project
-run the convert and create file (this will transform your old txt files to the new format and then put them away safely)
-double click the new Run TTS BSR icon to start the GUI, you can copy this to your desktop if needed (right click - send to - desktop create shortcut)
-Add plugins and user data from the BSR Injector Plugin folder to your game directory
+Run the install file, it may ask you to install .net Desktop 8.x, this is direct from Microsoft and is safe.
 
-DONE!
+you may have to try and run the install again and should be greeted by this install screen
 
-**New Users**
-Install Tikfinity https://tikfinity.zerody.one/app/
-Run the Install file
-run the Convert and Create file (for you this will create all the files needed to run this project)
-double click the new Run TTS BSR icon to start the GUI, you can copy this to your desktop if needed (right click - send to - desktop create shortcut)
-Add plugins and user data from the BSR Injector Plugin folder to your game directory
+![Splash screen](Images/InstallerSplash.png)
 
-DONE!
+After you click next there are a few options
+     New User - Decide if you want a shortcut and just press next and next again, all files will be crated for you.
+     Old user - any of my previous TTS versions
+     Create shortcut (you dont have to have this if you dont want it)
 
-For Commands in BeatSaber+ see Beatsaber+ docs
+![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)(https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype2.png)
 
-                    \*\*..................In the GUI...............…\*\*
+If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button
+     
 
 
 
