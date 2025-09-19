@@ -28,7 +28,7 @@ https://discord.gg/PVvv8M5e83
 
 We are always active and ready to help you with any issues.
 
-         
+         NOW WITH UPDATER FUNCTION! if your using V5 onwards, future releases will try and auto update your tts and keep your data!  
 
 .....The TTS BSR Injector V5 Overhaul edition....
 
