@@ -1,4 +1,4 @@
-# Build outputs
+# Build outputs - ALL bin and obj folders
 **/bin/
 **/obj/
 **/publish/
