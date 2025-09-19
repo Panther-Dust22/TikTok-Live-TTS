@@ -45,6 +45,7 @@ After you click next there are a few options
 ![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)
 
 If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button  
+     Click Browse and locate your old Data folder from wherever you kept TTS and select just 1 file, it will capture them all for you.  
      If you used txt files it will convert them for you and place them in the correct folder  
      if you are a json user it will move your old settings to the new folder
      
