@@ -19,32 +19,30 @@ get it from here https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector
 
 Thanks for downloading the new Overhauled version of our TTS
 
-We have tried to make this as user friendly as possible,
+We have tried to make this as user friendly as possible,  
 but there may still be glitches and bugs, feel free to report these
 
-you can discuss this program and its features or code on our Discord
-
+you can discuss this program and its features or code on our Discord  
 https://discord.gg/PVvv8M5e83
 
 we are always active and ready to help you with any issues.
 
          
-**.....The TTS BSR Injector V4 Overhaul edition....**
+**.....The TTS BSR Injector V5 Overhaul edition....**
 
 Install instructions.
 
-Run the install file, it may ask you to install .net Desktop 8.x, this is direct from Microsoft and is safe.
-
+Run the install file, it may ask you to install .net Desktop 8.x, this is direct from Microsoft and is safe.  
 you may have to try and run the install again and should be greeted by this install screen
 
 ![Splash screen](Images/InstallerSplash.png)
 
 After you click next there are a few options  
-     New User - Decide if you want a shortcut and just press next and next again, all files will be crated for you.
-     Old user - any of my previous TTS versions
+     New User - Decide if you want a shortcut and just press next and next again, all files will be crated for you.  
+     Old user - any of my previous TTS versions  
      Create shortcut (you dont have to have this if you dont want it)
 
-![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype2.png)
+![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)
 
 If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button
      
