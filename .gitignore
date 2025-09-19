@@ -1,0 +1,20 @@
+# Build outputs
+**/bin/
+**/obj/
+**/publish/
+
+# User-specific runtime data
+**/data/active_users.json
+**/data/user_tracker.lock
+**/logs/
+**/data/logs/
+
+# IDE files
+.vs/
+*.user
+*.suo
+
+# Installer
+TTS Installer/
+*.exe
+*.zip
