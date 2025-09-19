@@ -1,0 +1,95 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Light Theme Colors -->
+    <SolidColorBrush x:Key="AppBackgroundBrush" Color="#F8F9FA"/>
+    <SolidColorBrush x:Key="AppHeaderBackgroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="AppTextBrush" Color="#212529"/>
+    <SolidColorBrush x:Key="AppSecondaryTextBrush" Color="#6C757D"/>
+    <SolidColorBrush x:Key="AppBorderBrush" Color="#DEE2E6"/>
+    <SolidColorBrush x:Key="AppButtonAreaBackgroundBrush" Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="AppSwitchBackgroundBrush" Color="#C8C8C8"/>
+    <SolidColorBrush x:Key="AppConsoleBackgroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="AppConsoleTextBrush" Color="#212529"/>
+    <SolidColorBrush x:Key="AppQueueBackgroundBrush" Color="#F8F9FA"/>
+    <SolidColorBrush x:Key="AppQueueTextBrush" Color="#5E81AC"/>
+    <SolidColorBrush x:Key="NameSwapBorderBackgroundBrush" Color="#FFFFFF"/>
+    
+    <!-- Apply to Window -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{DynamicResource AppBackgroundBrush}"/>
+    </Style>
+    
+        <!-- Apply to TextBlocks -->
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}"/>
+            <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
+            <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
+            <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
+        </Style>
+    
+    <!-- Apply to Buttons (except functional ones) -->
+    <Style TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource AppButtonAreaBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AppBorderBrush}"/>
+    </Style>
+    
+    <!-- Apply to TextBoxes -->
+    <Style TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource AppButtonAreaBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource AppTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AppBorderBrush}"/>
+    </Style>
+    
+    <!-- Apply to ComboBoxes -->
+    <Style TargetType="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource AppButtonAreaBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AppBorderBrush}"/>
+    </Style>
+    
+    <!-- Apply to ComboBoxItems -->
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+    <!-- Apply to Borders -->
+    <Style TargetType="Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource AppBorderBrush}"/>
+    </Style>
+    
+    <!-- Apply to ScrollViewer -->
+    <Style TargetType="ScrollViewer">
+        <Setter Property="Background" Value="{DynamicResource AppConsoleBackgroundBrush}"/>
+    </Style>
+    
+    <!-- Apply to ListBox -->
+    <Style TargetType="ListBox">
+        <Setter Property="Background" Value="{DynamicResource AppConsoleBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource AppConsoleTextBrush}"/>
+    </Style>
+    
+    <!-- Specific style for NameSwapTextBox -->
+    <Style x:Key="NameSwapTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AppBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

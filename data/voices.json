@@ -1,0 +1,424 @@
+{
+  "Voice_List_cheat_sheet": {
+    "DISNEY_VOICES": [
+      {
+        "name": "GHOSTFACE",
+        "code": "en_us_ghostface"
+      },
+      {
+        "name": "CHEWBACCA",
+        "code": "en_us_chewbacca"
+      },
+      {
+        "name": "C3PO",
+        "code": "en_us_c3po"
+      },
+      {
+        "name": "STITCH",
+        "code": "en_us_stitch"
+      },
+      {
+        "name": "STORMTROOPER",
+        "code": "en_us_stormtrooper"
+      },
+      {
+        "name": "ROCKET",
+        "code": "en_us_rocket"
+      }
+    ],
+    "OTHER": [
+      {
+        "name": "EN_MALE_NARRATION",
+        "code": "en_male_narration"
+      },
+      {
+        "name": "EN_MALE_FUNNY",
+        "code": "en_male_funny"
+      },
+      {
+        "name": "EN_FEMALE_EMOTIONAL",
+        "code": "en_female_emotional"
+      }
+    ],
+    "ENGLISH_VOICES": [
+      {
+        "name": "PIRATE",
+        "code": "en_male_pirate"
+      },
+      {
+        "name": "BAE",
+        "code": "en_female_betty"
+      },
+      {
+        "name": "MARTY",
+        "code": "en_male_trevor"
+      },
+      {
+        "name": "LORDCRINGE",
+        "code": "en_male_ukneighbor"
+      },
+      {
+        "name": "DEADPOOL",
+        "code": "en_male_deadpool"
+      },
+      {
+        "name": "BESTIE",
+        "code": "en_female_richgirl"
+      },
+      {
+        "name": "EN_AU_MALE_1",
+        "code": "en_au_002"
+      },
+      {
+        "name": "EN_AU_MALE_2",
+        "code": "en_au_003"
+      },
+      {
+        "name": "EN_AU_FEMALE_1",
+        "code": "en_au_female_001"
+      },
+      {
+        "name": "EN_AU_FEMALE_2",
+        "code": "en_au_female_002"
+      },
+      {
+        "name": "EN_GB_MALE_1",
+        "code": "en_gb_001"
+      },
+      {
+        "name": "EN_GB_MALE_2",
+        "code": "en_gb_002"
+      },
+      {
+        "name": "EN_GB_FEMALE_1",
+        "code": "en_gb_female_001"
+      },
+      {
+        "name": "EN_GB_FEMALE_2",
+        "code": "en_gb_female_002"
+      },
+      {
+        "name": "EN_US_MALE_1",
+        "code": "en_us_001"
+      },
+      {
+        "name": "EN_US_MALE_2",
+        "code": "en_us_002"
+      },
+      {
+        "name": "EN_US_MALE_3",
+        "code": "en_us_003"
+      },
+      {
+        "name": "EN_US_MALE_4",
+        "code": "en_us_004"
+      },
+      {
+        "name": "EN_US_MALE_5",
+        "code": "en_us_005"
+      },
+      {
+        "name": "EN_US_MALE_6",
+        "code": "en_us_006"
+      },
+      {
+        "name": "EN_US_MALE_7",
+        "code": "en_us_007"
+      },
+      {
+        "name": "EN_US_MALE_8",
+        "code": "en_us_008"
+      },
+      {
+        "name": "EN_US_MALE_9",
+        "code": "en_us_009"
+      },
+      {
+        "name": "EN_US_MALE_10",
+        "code": "en_us_010"
+      },
+      {
+        "name": "EN_US_FEMALE_1",
+        "code": "en_us_female_001"
+      },
+      {
+        "name": "EN_US_FEMALE_2",
+        "code": "en_us_female_002"
+      },
+      {
+        "name": "EN_US_FEMALE_3",
+        "code": "en_us_female_003"
+      },
+      {
+        "name": "EN_US_FEMALE_4",
+        "code": "en_us_female_004"
+      },
+      {
+        "name": "EN_US_FEMALE_5",
+        "code": "en_us_female_005"
+      },
+      {
+        "name": "EN_US_FEMALE_6",
+        "code": "en_us_female_006"
+      },
+      {
+        "name": "EN_US_FEMALE_7",
+        "code": "en_us_female_007"
+      },
+      {
+        "name": "EN_US_FEMALE_8",
+        "code": "en_us_female_008"
+      },
+      {
+        "name": "EN_US_FEMALE_9",
+        "code": "en_us_female_009"
+      },
+      {
+        "name": "EN_US_FEMALE_10",
+        "code": "en_us_female_010"
+      }
+    ],
+    "EUROPE_VOICES": [
+      {
+        "name": "FR_MALE_1",
+        "code": "fr_001"
+      },
+      {
+        "name": "FR_FEMALE_1",
+        "code": "fr_female_001"
+      },
+      {
+        "name": "DE_MALE_1",
+        "code": "de_001"
+      },
+      {
+        "name": "DE_FEMALE_1",
+        "code": "de_female_001"
+      },
+      {
+        "name": "ES_MALE_1",
+        "code": "es_001"
+      }
+    ],
+    "AMERICA_VOICES": [
+      {
+        "name": "MX_MALE_1",
+        "code": "mx_001"
+      },
+      {
+        "name": "MX_FEMALE_1",
+        "code": "mx_female_001"
+      },
+      {
+        "name": "BR_MALE_1",
+        "code": "br_001"
+      },
+      {
+        "name": "BR_FEMALE_1",
+        "code": "br_female_001"
+      },
+      {
+        "name": "BR_MALE_2",
+        "code": "br_002"
+      }
+    ],
+    "ASIA_VOICES": [
+      {
+        "name": "ID_MALE_1",
+        "code": "id_001"
+      },
+      {
+        "name": "ID_FEMALE_1",
+        "code": "id_female_001"
+      },
+      {
+        "name": "JP_MALE_1",
+        "code": "jp_001"
+      },
+      {
+        "name": "JP_FEMALE_1",
+        "code": "jp_female_001"
+      },
+      {
+        "name": "KR_MALE_1",
+        "code": "kr_001"
+      },
+      {
+        "name": "KR_FEMALE_1",
+        "code": "kr_female_001"
+      },
+      {
+        "name": "KR_MALE_2",
+        "code": "kr_002"
+      },
+      {
+        "name": "KR_FEMALE_2",
+        "code": "kr_female_002"
+      }
+    ],
+    "SINGING_VOICES": [
+      {
+        "name": "ALTO",
+        "code": "en_female_singing_01"
+      },
+      {
+        "name": "TENOR",
+        "code": "en_male_singing_01"
+      },
+      {
+        "name": "WARM_BREEZE",
+        "code": "en_female_singing_02"
+      },
+      {
+        "name": "SUNSHINE_SOON",
+        "code": "en_male_singing_02"
+      }
+    ],
+    "NEW_VOICES": [
+      {
+        "name": "EN_SEASONAL_1",
+        "code": "en_seasonal_001"
+      },
+      {
+        "name": "EN_SEASONAL_2",
+        "code": "en_seasonal_002"
+      },
+      {
+        "name": "JP_MALE_2",
+        "code": "jp_002"
+      },
+      {
+        "name": "JP_FEMALE_2",
+        "code": "jp_female_002"
+      },
+      {
+        "name": "PT_MALE_1",
+        "code": "pt_001"
+      },
+      {
+        "name": "PT_FEMALE_1",
+        "code": "pt_female_001"
+      },
+      {
+        "name": "EN_STREAMING_1",
+        "code": "en_streaming_001"
+      },
+      {
+        "name": "EN_STREAMING_2",
+        "code": "en_streaming_002"
+      },
+      {
+        "name": "EN_STREAMING_3",
+        "code": "en_streaming_003"
+      },
+      {
+        "name": "EN_STREAMING_4",
+        "code": "en_streaming_004"
+      },
+      {
+        "name": "EN_STREAMING_5",
+        "code": "en_streaming_005"
+      },
+      {
+        "name": "EN_STREAMING_6",
+        "code": "en_streaming_006"
+      },
+      {
+        "name": "EN_STREAMING_7",
+        "code": "en_streaming_007"
+      },
+      {
+        "name": "EN_STREAMING_8",
+        "code": "en_streaming_008"
+      },
+      {
+        "name": "EN_STREAMING_9",
+        "code": "en_streaming_009"
+      },
+      {
+        "name": "EN_STREAMING_10",
+        "code": "en_streaming_010"
+      },
+      {
+        "name": "EN_STREAMING_11",
+        "code": "en_streaming_011"
+      },
+      {
+        "name": "EN_STREAMING_12",
+        "code": "en_streaming_012"
+      },
+      {
+        "name": "EN_STREAMING_13",
+        "code": "en_streaming_013"
+      },
+      {
+        "name": "EN_STREAMING_14",
+        "code": "en_streaming_014"
+      },
+      {
+        "name": "EN_STREAMING_15",
+        "code": "en_streaming_015"
+      },
+      {
+        "name": "EN_STREAMING_16",
+        "code": "en_streaming_016"
+      },
+      {
+        "name": "EN_STREAMING_17",
+        "code": "en_streaming_017"
+      },
+      {
+        "name": "EN_STREAMING_18",
+        "code": "en_streaming_018"
+      },
+      {
+        "name": "EN_STREAMING_19",
+        "code": "en_streaming_019"
+      },
+      {
+        "name": "EN_STREAMING_20",
+        "code": "en_streaming_020"
+      },
+      {
+        "name": "EN_STREAMING_21",
+        "code": "en_streaming_021"
+      },
+      {
+        "name": "EN_STREAMING_22",
+        "code": "en_streaming_022"
+      },
+      {
+        "name": "EN_STREAMING_23",
+        "code": "en_streaming_023"
+      },
+      {
+        "name": "EN_STREAMING_24",
+        "code": "en_streaming_024"
+      },
+      {
+        "name": "EN_STREAMING_25",
+        "code": "en_streaming_025"
+      },
+      {
+        "name": "EN_STREAMING_26",
+        "code": "en_streaming_026"
+      },
+      {
+        "name": "EN_STREAMING_27",
+        "code": "en_streaming_027"
+      },
+      {
+        "name": "EN_STREAMING_28",
+        "code": "en_streaming_028"
+      },
+      {
+        "name": "EN_STREAMING_29",
+        "code": "en_streaming_029"
+      },
+      {
+        "name": "EN_STREAMING_30",
+        "code": "en_streaming_030"
+      }
+    ]
+  }
+}

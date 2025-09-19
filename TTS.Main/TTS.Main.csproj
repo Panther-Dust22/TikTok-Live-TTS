@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>AnyCPU</Platforms>
+    <AssemblyVersion>5.0.0.0</AssemblyVersion>
+    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.0.0</Version>
+    <Product>TikTok TTS System</Product>
+    <Company>Emstar233 &amp; Husband</Company>
+    <Copyright>Copyright © 2025</Copyright>
+    <Description>TikTok Live TTS BSR Injector - Modular C# Version</Description>
+  </PropertyGroup>
+  
+  
+  <ItemGroup>
+    <ProjectReference Include="..\TTS.Shared\TTS.Shared.csproj" />
+    <ProjectReference Include="..\TTS.Processing\TTS.Processing.csproj" />
+    <ProjectReference Include="..\TTS.TTS\TTS.TTS.csproj" />
+    <ProjectReference Include="..\TTS.AudioQueue\TTS.AudioQueue.csproj" />
+    <ProjectReference Include="..\TTS.UserTracking\TTS.UserTracking.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="OIG3_10.ico" />
+    <Resource Include="banner.png" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="Themes\Dark.xaml" />
+    <Resource Include="Themes\Light.xaml" />
+    <Resource Include="Themes\Neutral.xaml" />
+  </ItemGroup>
+</Project>

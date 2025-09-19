@@ -1,0 +1,8 @@
+{
+  "request_timeout": 3,
+  "max_retries": 1,
+  "retry_delay": 0.2,
+  "playback_speed": 1.4,
+  "max_concurrent_requests": 5,
+  "volume": 1
+}

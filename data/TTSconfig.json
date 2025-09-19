@@ -1,0 +1,69 @@
+{
+  "api_endpoints": [
+    {
+      "url": "https://tiktok-tts.weilnet.workers.dev/api/generation",
+      "response": "data",
+      "name": "weilnet_backup"
+    },
+    {
+      "url": "https://gesserit.co/api/tiktok-tts",
+      "response": "base64",
+      "name": "gesserit"
+    },
+    {
+      "url": "https://tiktok-tts.weilnet.workers.dev/api/generation",
+      "response": "data",
+      "name": "weilnet"
+    }
+  ],
+  "last_api_test": "2025-09-19T19:50:27.311314",
+  "api_test_interval_minutes": 3,
+  "request_timeout": 15,
+  "performance_test_enabled": false,
+  "max_retries": 3,
+  "retry_delay": 1.5,
+  "playback_speed": 1.3,
+  "max_concurrent_requests": 5,
+  "performance_test_text": "Hello world, this is a test message for API performance testing.",
+  "performance_test_voice": "EN_US_MALE_1",
+  "performance_test_timeout": 10,
+  "performance_test_retries": 2,
+  "reorder_threshold": 3,
+  "last_performance_test": {
+    "timestamp": "2025-08-06T17:15:20.006264",
+    "results": [
+      "Test 1: [OK] Success",
+      "Test 2: [OK] Success",
+      "Test 3: [OK] Success",
+      "Test 4: [OK] Success",
+      "Test 5: [OK] Success"
+    ],
+    "total_tests": 5,
+    "successful_tests": 5
+  },
+  "api_test_results": {
+    "timestamp": "2025-09-19T19:50:27.316836",
+    "test_text": "API monitor test",
+    "test_voice": "en_us_006",
+    "results": {
+      "weilnet_backup": {
+        "response_time": 0,
+        "success": true,
+        "error": "",
+        "rank": 1
+      },
+      "gesserit": {
+        "response_time": 0,
+        "success": true,
+        "error": "",
+        "rank": 2
+      },
+      "weilnet": {
+        "response_time": 0,
+        "success": true,
+        "error": "",
+        "rank": 3
+      }
+    }
+  }
+}

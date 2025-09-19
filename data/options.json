@@ -1,0 +1,26 @@
+{
+  "TT_username": "username",
+  "A_ttscode": "FALSE",
+  "Mod_only": "FALSE",
+  "Mod_only_commands": [
+    "!cam1",
+    "!cam2"
+  ],
+  "Voice_change": {
+    "Enabled": "FALSE"
+  },
+  "D_voice_map": {
+    "Subscriber": "LORDCRINGE",
+    "Moderator": "BAE",
+    "Follow Role 0": "MARTY",
+    "Follow Role 1": "MARTY",
+    "Follow Role 2": "MARTY",
+    "Top Gifter 1": "BESTIE",
+    "Top Gifter 2": "BESTIE",
+    "Top Gifter 3": "BESTIE",
+    "Top Gifter 4": "BESTIE",
+    "Top Gifter 5": "BESTIE",
+    "BadWordVoice": "DEADPOOL",
+    "Default": "EN_AU_MALE_1"
+  }
+}

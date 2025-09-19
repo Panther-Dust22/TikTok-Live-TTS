@@ -1,0 +1,11 @@
+<UserControl x:Class="TTS.Main.Controls.WhiteTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border Background="White" BorderBrush="Gray" BorderThickness="1">
+        <TextBox x:Name="InnerTextBox" 
+                 Background="White" 
+                 Foreground="Black"
+                 BorderThickness="0" 
+                 Padding="5,5,5,5"/>
+    </Border>
+</UserControl>

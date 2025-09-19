@@ -1,0 +1,370 @@
+<Window x:Class="TTS.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TTS.Main.Controls"
+        Title="TTS Voice System - Modular" Height="800" Width="1400" MinHeight="600" MinWidth="1200"
+        WindowStartupLocation="CenterScreen" Background="{DynamicResource AppBackgroundBrush}"
+        ResizeMode="CanResize"
+        Icon="OIG3_10.ico"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        RenderOptions.EdgeMode="Aliased">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Modern Header -->
+        <Border x:Name="HeaderBorder" Grid.Row="0" Background="{DynamicResource AppHeaderBackgroundBrush}" Padding="20" Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Left: Banner Logo -->
+                <Border Grid.Column="0" Background="Transparent" Padding="5" Margin="0,0,20,0">
+                    <Image Source="banner.png" Height="80" Width="Auto" 
+                           Stretch="Uniform" VerticalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           RenderOptions.EdgeMode="Aliased"/>
+                </Border>
+                
+                <!-- Center: Title and Info -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <TextBlock x:Name="TitleTextBlock" Text="🔊 TTS Voice System" 
+                              FontSize="24" FontWeight="Bold" 
+                              Foreground="{DynamicResource AppTextBrush}" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="SubtitleTextBlock" Text="Modular Architecture - Created by Emstar233 &amp; Husband" 
+                              FontSize="12" Foreground="{DynamicResource AppSecondaryTextBrush}" 
+                              HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
+                
+                <!-- Right: Theme Switch and Reset -->
+                <Border Grid.Column="2" Background="{DynamicResource AppButtonAreaBackgroundBrush}" CornerRadius="20" Padding="5" Margin="20,0,0,0">
+                    <StackPanel VerticalAlignment="Center">
+                        <!-- Star symbol above switch -->
+                        <TextBlock Text="★" FontSize="24" Foreground="#FFD700" 
+                                   HorizontalAlignment="Center" Margin="3,0,0,5"
+                                   ToolTip="Normal Theme (EmmStar233's Default)"/>
+                        
+                        <!-- Theme switch with side symbols -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="☾" FontSize="18" Foreground="#FFD700" 
+                                       VerticalAlignment="Center" Margin="0,0,8,0"
+                                       ToolTip="Dark Theme"/>
+                            
+                            <Border x:Name="ThemeSwitchGrid" Width="60" Height="25" Background="{DynamicResource AppSwitchBackgroundBrush}" 
+                                    CornerRadius="12.5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!-- Clickable areas for each position -->
+                                    <Border Grid.Column="0" Background="Transparent" 
+                                            MouseLeftButtonDown="ThemeSwitch_Dark_Click"/>
+                                    <Border Grid.Column="1" Background="Transparent" 
+                                            MouseLeftButtonDown="ThemeSwitch_Neutral_Click"/>
+                                    <Border Grid.Column="2" Background="Transparent" 
+                                            MouseLeftButtonDown="ThemeSwitch_Light_Click"/>
+                                    
+                                    <Ellipse x:Name="ThemeSwitchThumb" 
+                                            Fill="White" 
+                                            Width="20" Height="20" 
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"
+                                            IsHitTestVisible="False"/>
+                                </Grid>
+                            </Border>
+                            
+                            <TextBlock Text="☀" FontSize="18" Foreground="#FFD700" 
+                                       VerticalAlignment="Center" Margin="8,0,0,0"
+                                       ToolTip="Light Theme"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" MinWidth="500"/>
+                <ColumnDefinition Width="3*" MinWidth="600"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Left Side - Console -->
+            <GroupBox Grid.Column="0" Header="System Log" Foreground="{DynamicResource AppTextBrush}" Background="{DynamicResource AppButtonAreaBackgroundBrush}" BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="1">
+                <TextBox x:Name="ConsoleTextBox" 
+                         IsReadOnly="True" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto"
+                         Background="{DynamicResource AppConsoleBackgroundBrush}"
+                         Foreground="{DynamicResource AppConsoleTextBrush}"
+                         FontFamily="Consolas"
+                         FontSize="12"
+                         MinHeight="400"/>
+            </GroupBox>
+            
+            <!-- Right Side - Controls -->
+            <Grid Grid.Column="1" Background="{DynamicResource AppButtonAreaBackgroundBrush}" Margin="10,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Row 0 - Module Status Traffic Lights -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,2" HorizontalAlignment="Center">
+                    <TextBlock Text="Module Status:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" 
+                               VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    
+                    <!-- Processing Module Status -->
+                    <StackPanel Orientation="Vertical" Margin="5,0">
+                        <Ellipse x:Name="ProcessingStatusLight" Width="12" Height="12" Fill="Red" Margin="0,0,0,2"/>
+                        <TextBlock Text="Processing" FontSize="10" Foreground="{DynamicResource AppTextBrush}" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
+                    <!-- TTS Module Status -->
+                    <StackPanel Orientation="Vertical" Margin="5,0">
+                        <Ellipse x:Name="TtsStatusLight" Width="12" Height="12" Fill="Red" Margin="0,0,0,2"/>
+                        <TextBlock Text="TTS" FontSize="10" Foreground="{DynamicResource AppTextBrush}" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
+                    <!-- AudioQueue Module Status -->
+                    <StackPanel Orientation="Vertical" Margin="5,0">
+                        <Ellipse x:Name="AudioQueueStatusLight" Width="12" Height="12" Fill="Red" Margin="0,0,0,2"/>
+                        <TextBlock Text="AudioQueue" FontSize="10" Foreground="{DynamicResource AppTextBrush}" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    
+                    <!-- UserTracking Module Status -->
+                    <StackPanel Orientation="Vertical" Margin="5,0">
+                        <Ellipse x:Name="UserTrackingStatusLight" Width="12" Height="12" Fill="Red" Margin="0,0,0,2"/>
+                        <TextBlock Text="UserTracking" FontSize="10" Foreground="{DynamicResource AppTextBrush}" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <!-- Row 1 - Main Control Buttons -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+                    <!-- Auto-Start Checkbox -->
+                    <CheckBox x:Name="AutoStartCheckbox" Content="Auto-Start" 
+                              Foreground="{DynamicResource AppTextBrush}" FontSize="10" FontWeight="Bold"
+                              VerticalAlignment="Center" Margin="0,0,10,0"
+                              Checked="AutoStartCheckbox_Checked" Unchecked="AutoStartCheckbox_Unchecked"/>
+                    
+                    <Button x:Name="StartTtsButton" Content="Start TTS" Width="120" Height="40" 
+                            Background="#5E81AC" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="StartTtsButton_Click"/>
+                    <Button x:Name="TtsCommandButton" Content="!tts Command&#x0a;Disabled" Width="100" Height="40" 
+                            Background="#D08770" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="TtsCommandButton_Click"/>
+                    <Button x:Name="ModCommandsButton" Content="Mod Commands&#x0a;Disabled" Width="120" Height="40" 
+                            Background="#D08770" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="ModCommandsButton_Click"/>
+                    <Button x:Name="SpecialsButton" Content="Specials" Width="100" Height="40" 
+                            Background="#EBCB8B" Foreground="Black" FontWeight="Bold" Margin="2"
+                            Click="SpecialsButton_Click"/>
+                    <Button x:Name="FilterButton" Content="Edit Bad Word&#x0a;Filter &amp; Reply" Width="120" Height="40" 
+                            Background="#EBCB8B" Foreground="Black" FontWeight="Bold" Margin="2"
+                            Click="FilterButton_Click"/>
+                    <Button x:Name="EmergencyButton" Content="🚨 Emergency Stop&#x0a;Daemon" Width="120" Height="40" 
+                            Background="#BF616A" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="EmergencyButton_Click"/>
+                </StackPanel>
+                
+                <!-- Row 2 - Dropdowns and Controls -->
+                <Grid Grid.Row="2" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Dropdowns Row -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" MinWidth="120"/>
+                            <ColumnDefinition Width="2*" MinWidth="200"/>
+                            <ColumnDefinition Width="1*" MinWidth="120"/>
+                            <ColumnDefinition Width="0.5*" MinWidth="60"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Active Users -->
+                        <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                            <TextBlock Text="Active Users:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="UsersComboBox" Height="30" IsReadOnly="True"
+                                      SelectionChanged="UsersComboBox_SelectionChanged"/>
+                        </StackPanel>
+                        
+                        <!-- Voices -->
+                        <StackPanel Grid.Column="1" Margin="5,0">
+                            <TextBlock Text="Voices:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="VoicesComboBox" Height="30"/>
+                        </StackPanel>
+                        
+                        <!-- Name Swap -->
+                        <StackPanel Grid.Column="2" Margin="5,0">
+                            <TextBlock Text="Name Swap:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,0,2"/>
+                            
+                            <Grid Height="30">
+                                <!-- TextBox at the bottom -->
+                                <TextBox x:Name="NameSwapTextBox" 
+                                         Background="Transparent" 
+                                         Foreground="Transparent"
+                                         BorderThickness="0" 
+                                         Padding="5,5,5,5"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch"/>
+                                
+                                <!-- White overlay on top -->
+                                <Rectangle Fill="White" Stroke="Gray" StrokeThickness="1" 
+                                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                          IsHitTestVisible="False"/>
+                                
+                                <!-- Text overlay on top of everything -->
+                                <TextBlock x:Name="NameSwapTextOverlay" 
+                                          Text=""
+                                          Foreground="Black"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Left"
+                                          Margin="5,0,0,0"
+                                          FontSize="12"
+                                          IsHitTestVisible="False"/>
+                            </Grid>
+                        </StackPanel>
+                        
+                        <!-- Speed -->
+                        <StackPanel Grid.Column="3" Margin="5,0">
+                            <TextBlock Text="Speed:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" Margin="0,0,0,2"/>
+                            <ComboBox x:Name="SpeedComboBox" Height="30"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <!-- Voice Control Buttons Row -->
+                    <Grid Grid.Row="1" Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" MinWidth="120"/>
+                            <ColumnDefinition Width="2*" MinWidth="200"/>
+                            <ColumnDefinition Width="1*" MinWidth="120"/>
+                            <ColumnDefinition Width="0.5*" MinWidth="60"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Apply Button -->
+                        <Button x:Name="ApplyVoiceButton" Content="Apply" Height="35" 
+                                Grid.Column="0" Margin="0,0,5,0"
+                                Background="#5E81AC" Foreground="White" FontWeight="Bold" FontSize="12"
+                                Click="ApplyVoiceButton_Click"/>
+                        
+                        <!-- Remove Button -->
+                        <Button x:Name="RemoveVoiceButton" Content="Remove" Height="35" 
+                                Grid.Column="1" Margin="5,0"
+                                Background="#BF616A" Foreground="White" FontWeight="Bold" FontSize="12"
+                                Click="RemoveVoiceButton_Click"/>
+                        
+                        <!-- Edit List Button -->
+                        <Button x:Name="EditPriorityButton" Content="Edit List" Height="35" 
+                                Grid.Column="2" Margin="5,0"
+                                Background="#B48EAD" Foreground="White" FontWeight="Bold" FontSize="12"
+                                Click="EditPriorityButton_Click"/>
+                    </Grid>
+                </Grid>
+                
+                <!-- Row 3 - Volume Slider -->
+                <StackPanel Grid.Row="3" Margin="5">
+                    <TextBlock Text="TTS Volume:" Foreground="{DynamicResource AppTextBrush}" FontSize="10" FontWeight="Bold"/>
+                    <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="1" 
+                            TickFrequency="0.05" IsSnapToTickEnabled="True"
+                            ValueChanged="VolumeSlider_ValueChanged"/>
+                </StackPanel>
+                
+                <!-- Row 4 - Queue and Actions -->
+                <Grid Grid.Row="4" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" MinWidth="100"/>
+                        <ColumnDefinition Width="1*" MinWidth="100"/>
+                        <ColumnDefinition Width="1*" MinWidth="100"/>
+                        <ColumnDefinition Width="1*" MinWidth="100"/>
+                        <ColumnDefinition Width="1*" MinWidth="100"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Grid.Column="0" Background="{DynamicResource AppQueueBackgroundBrush}" BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="2" 
+                            Height="70" Margin="2">
+                        <TextBlock x:Name="QueueDisplay" Text="MSG Queue&#x0a;&#x0a;0" 
+                                   Foreground="{DynamicResource AppQueueTextBrush}" FontFamily="Consolas" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="1" Background="{DynamicResource AppQueueBackgroundBrush}" BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="2" 
+                            Height="70" Margin="2">
+                        <TextBlock x:Name="AudioQueueDisplay" Text="AUDIO Queue&#x0a;&#x0a;0" 
+                                   Foreground="{DynamicResource AppQueueTextBrush}" FontFamily="Consolas" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Border Grid.Column="2" Background="{DynamicResource AppQueueBackgroundBrush}" BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="2" 
+                            Height="70" Margin="2">
+                        <TextBlock x:Name="ActiveUserCountDisplay" Text="ACTIVE Users&#x0a;&#x0a;0" 
+                                   Foreground="{DynamicResource AppQueueTextBrush}" FontFamily="Consolas" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <Button Grid.Column="3" x:Name="UpdateButton" Content="No updates" Height="50" 
+                            Background="#D08770" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="UpdateButton_Click"/>
+                    <Button Grid.Column="4" x:Name="ApiTestButton" Content="Test API&#x0a;Performance" Height="50" 
+                            Background="#5E81AC" Foreground="White" FontWeight="Bold" Margin="2"
+                            Click="ApiTestButton_Click"/>
+                </Grid>
+                
+                <!-- Row 5 - Information and Updates Section -->
+                <Border Grid.Row="5" Background="{DynamicResource AppQueueBackgroundBrush}" BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="1" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Information and Updates Panel Header -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5">
+                            <TextBlock Text="Information and Updates Panel - " 
+                                       Foreground="{DynamicResource AppQueueTextBrush}" FontWeight="Bold" FontSize="14"/>
+                            <TextBlock Text="Visit our Discord" 
+                                       Foreground="{DynamicResource AppQueueTextBrush}" FontWeight="Bold" FontSize="14"
+                                       TextDecorations="Underline" Cursor="Hand"
+                                       MouseLeftButtonDown="DiscordLink_MouseLeftButtonDown"/>
+                        </StackPanel>
+                        
+                        <!-- Remote Message Area -->
+                        <Border Grid.Row="1" Background="{DynamicResource AppConsoleBackgroundBrush}" 
+                                BorderBrush="{DynamicResource AppBorderBrush}" BorderThickness="1" 
+                                Margin="10,5,10,10" CornerRadius="3">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                                <TextBlock x:Name="RemoteMessageTextBlock" 
+                                           Text="Loading updates..." 
+                                           Foreground="{DynamicResource AppConsoleTextBrush}" 
+                                           FontSize="12" FontFamily="Consolas"
+                                           TextWrapping="Wrap" Margin="8"
+                                           HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
