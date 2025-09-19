@@ -44,7 +44,7 @@ After you click next there are a few options
      Old user - any of my previous TTS versions
      Create shortcut (you dont have to have this if you dont want it)
 
-![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)(https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype2.png)
+![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype2.png)
 
 If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button
      
