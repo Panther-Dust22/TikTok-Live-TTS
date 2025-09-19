@@ -44,38 +44,33 @@ After you click next there are a few options
 
 ![User Selection](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Installtype.png)
 
-If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button
+If you are a previous user of any of our old TTS apps you will be greeted with a screen with a browse button  
+     If you used txt files it will convert them for you and place them in the correct folder  
+     if you are a json user it will move your old settings to the new folder
      
+![old Files](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Fileselect.png)
 
+Once finished you can launch the TTS app or close the installer, a shortcut will be on your desktop if you selected it
 
+![Installed](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Final.png)
 
+In the GUI are all the buttons, bells and whistles (voices) that you could need.  
+The left side gives you a command window, an idea of what is going on in the program.  
 
-In the GUI are all the buttons, bells and whistles (voices) that you could need.
-The left side gives you a command window, an idea of what is going on in the program.
+on the right side at the top you have health status of each module of the system, red means not active or error, green is online and working  
 
+1st row row of buttons.
 
+Start/Stop    : will be green when TTS is running and Red when stopped  
+!tts command  : Enables or disables the need for viewers to use the !tts code to speak  
+Mod Commands  : Enables or disables the abilities for Moderators to control your TTS NEW COMMANDS ADDED SEE END OF README!  
+Specials      : A control panel for default tts speed, default voices for mods, subs followers etc  
+Edit bad reply: Brings up a panel to add or remove filter words and replies  
+Emergency stop: Turn on or off the Mod command to stop tts and reset it if someone is being a prick  
 
-on the right side 1st row you have a row of buttons.
-
-
-
-Start/Stop    : will be green when TTS is running and Red when stopped
-
-!tts command  : Enables or disables the need for viewers to use the !tts code to speak
-
-Mod Commands  : Enables or disables the abilities for Moderators to control your TTS NEW COMMANDS ADDED SEE END OF README!
-
-Specials      : A control panel for default tts speed, default voices for mods, subs followers etc
-
-Edit bad reply: Brings up a panel to add or remove filter words and replies
-Emergency stop: Turn on or off the Mod command to stop tts and reset it if someone is being a prick
-
-** Not Needed anymore - left as a backup option **
-BSR Injector  : Opens the improved bsr injector page for sending everything to twitch to make the bsr codes work
-
+** BSR INJECTOR REMOVED AS ITS NOW STANDALONE **
 
 2nd row is active user control, active users in the last 10 mins are captured and added to this list for voice control
-
 
 Active user       : Select the user to adjust
 Voices            : Select a voice available from the list for this user
@@ -83,20 +78,22 @@ Name Swap         : change a users spoken name (great if they have a long name o
 Speed             : Change the spoken speed of this one user (none uses set default speed)
 Apply (button)    : Apply the above changes
 Remove (button)   : Removes the above properties for selected user
-Edit List (button): Shows your entire priority voice list where you can delete users off even if not online
+Edit List (button): Shows your entire priority voice list where you can edit and delete users off even if not online
 
-3rd row is volume
+![Edit Boxes](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/EditList.png)
 
+3rd row is volume  
 Volume slider     : Do i have to explain this one?
 
-4th row is updates and test API
+4th row is system info updates and test API
 
-Updates button    : will flash red if there is an update available on Github for you
+Msg queue, Audio Queue, Active users - these are self explatort, if msg queue or audio queue start to show anything other than 0 then there is an error  
+Active users just shows the total amount of users talking in your Live session.  
+Updates button    : will flash red if there is an update available on Github for you  
 Test API          : Will check the API is working for voices, mostly just use to diagnose issues
 
-5th row is my information bar, shows next planned update and gives a link to our discord
-
-HAVE FUN!
+5th row is my information panel, shows next planned update and live information on any bugs found and also gives a link to our discord
+![user interface](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Mainwindow.png)
 
 Updates: Installer was having issues so I fixed it for you to manualy install Python, it will give you a clickable link, Crash Detector no longer randomly shuts down and makes sure that you are always running!
 New Official BSR plugin for TikTok added, have fun with this streamers.
