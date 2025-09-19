@@ -1,7 +1,7 @@
 Note the BSR injector is no longer bundled with this system
 get it from here https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector
 
-![Images}((https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/banner.png)
+![Header Banner}(Images/banner.png)
 
 ```
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
