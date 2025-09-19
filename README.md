@@ -39,7 +39,7 @@ you may have to try and run the install again and should be greeted by this inst
 
 ![Splash screen](Images/InstallerSplash.png)
 
-After you click next there are a few options
+After you click next there are a few options,
      New User - Decide if you want a shortcut and just press next and next again, all files will be crated for you.
      Old user - any of my previous TTS versions
      Create shortcut (you dont have to have this if you dont want it)
