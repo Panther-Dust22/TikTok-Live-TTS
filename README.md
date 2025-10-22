@@ -1,3 +1,13 @@
+Updates: V5.1  
+Fix scrolling for Bad words and reply list (no more limit)  
+Add NONE to specials list (so you can set catagorys like friends to not have a voice)  
+Audio Glitch on some systems (Increased Buffer size to 4 and latency to 120)
+Installer Update (Correctly identifies previous install and always updates voice list)  
+Nameswap box now has curser (gui glitch meant this did not appear)  
+Edit list nameswap boxes now has cursor (same as above)  
+Background code updates (just making things run a bit smoother and preparing for future updates)
+
+
 Note the BSR injector is no longer bundled with this system.  
 Get it from here: https://github.com/Panther-Dust22/TikTok-Beatsaber-bsr-Injector  
 for older versions of TTS see releases here https://github.com/Panther-Dust22/TikTok-Live-TTS-BSR-Injector
@@ -7,13 +17,13 @@ for older versions of TTS see releases here https://github.com/Panther-Dust22/Ti
 ```
 
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
-     ✨         TTS Voice System V5              ✨
+     ✨         TTS Voice System V5.1            ✨
      ✨                OVERHAUL                  ✨
      ✨       ___ __  __    ___ ________         ✨
      ✨      | __|  \/  |/\|_  )__ /__ /         ✨
-     ✨      | |_| |\/| >  </ / | \|_ \         ✨
+     ✨      | |_| |\/| >  </ / | \|_ \          ✨
      ✨      |___|_|  |_|\//___|___/___/         ✨
-     ✨💫 Created by Emstar233 & Husband (V5) 💫✨
+     ✨💫Created by Emstar233 & Husband (V5.1)💫✨
 ✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨⭐✨
 
 ```  
@@ -101,7 +111,7 @@ Test API          : Will check the API is working for voices, mostly just use to
 
 ![user interface](https://github.com/Panther-Dust22/TikTok-Live-TTS/blob/main/Images/Mainwindow.png)
 
-Updates: NO MORE PYTHON! this system is built using c#, its faster, better, stronger and works harder without eating into CPU resources, it has its own installer to guide you through the full setup.  
+Updates: V5+ NO MORE PYTHON! this system is built using c#, its faster, better, stronger and works harder without eating into CPU resources, it has its own installer to guide you through the full setup.  
 i have added a couple new things over the previous version including user count, information panel and themes
 
 Mod commands for stream if enabled, give this list to your mods or add to your Discord.
