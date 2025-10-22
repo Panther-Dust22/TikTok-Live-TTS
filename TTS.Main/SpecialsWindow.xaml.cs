@@ -46,7 +46,7 @@ namespace TTS.Main
 
         private void PopulateVoiceOptions()
         {
-            var voiceOptions = new List<string> { "Default" };
+            var voiceOptions = new List<string> { "NONE", "Default" };
             
             if (_settings?.Voices?.Voice_List_cheat_sheet != null)
             {
@@ -127,6 +127,10 @@ namespace TTS.Main
                             
                             // Find and set the selected item directly
                             var matchingItem = comboBox.Items.Cast<string>().FirstOrDefault(item => item == mapping.Value);
+                            if (matchingItem == null && string.Equals(mapping.Value, "NONE", StringComparison.OrdinalIgnoreCase))
+                            {
+                                matchingItem = "NONE";
+                            }
                             if (matchingItem != null)
                             {
                                 // Try a different approach - clear selection first, then set

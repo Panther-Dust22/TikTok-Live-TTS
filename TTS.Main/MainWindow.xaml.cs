@@ -20,6 +20,7 @@ using TTS.AudioQueue;
 using TTS.UserTracking;
 using TTS.Shared.Models;
 using System.Runtime.InteropServices; // For Windows API calls
+using System.Reflection;
 using System.Text.Json;
 using System.Net.Http;
 using System.Runtime.InteropServices.ComTypes;
@@ -67,6 +68,12 @@ namespace TTS.Main
             
             // Subscribe to GUI messages from Logger
             Logger.GuiMessageReceived += OnGuiMessageReceived;
+
+            // No plugin-specific wiring here; loader remains generic
+
+            // Ensure window lifecycle events are wired
+            this.Loaded += Window_Loaded;
+            this.Closing += Window_Closing;
         }
 
         private void InitializeGui()
@@ -90,11 +97,14 @@ namespace TTS.Main
             }
             
             
-            // Set up overlay sync
-            this.Loaded += (s, e) => {
-                NameSwapTextBox.TextChanged += (sender, args) => {
-                    NameSwapTextOverlay.Text = NameSwapTextBox.Text;
-                };
+            // Ensure NameSwap uses normal textbox visuals without overlay
+            this.Loaded += (s, e) =>
+            {
+                // Keep overlay hidden; TextBox renders normally
+                NameSwapTextOverlay.Visibility = Visibility.Collapsed;
+                NameSwapTextBox.Foreground = new SolidColorBrush(Colors.Black);
+                NameSwapTextBox.Background = new SolidColorBrush(Colors.White);
+                NameSwapTextBox.CaretBrush = new SolidColorBrush(Colors.Black);
             };
             
             // Initialize speed dropdown
@@ -595,6 +605,8 @@ namespace TTS.Main
             
             // Subscribe to user tracking events
             _userTrackingModule.ActiveUsersChanged += OnActiveUsersChanged;
+            // Bridge external chat (from mods) into user tracking when available
+            // This uses the processing pipeline outputs; for immediate registration, we also hook mod host below
             
             UpdateModuleStatuses();
         }
@@ -951,13 +963,12 @@ namespace TTS.Main
         // Helper methods for NameSwapTextBox with overlay
         private string GetNameSwapText()
         {
-            return NameSwapTextOverlay.Text.Trim();
+            return NameSwapTextBox.Text?.Trim() ?? string.Empty;
         }
 
         private void SetNameSwapText(string text)
         {
             NameSwapTextBox.Text = text;
-            NameSwapTextOverlay.Text = text;
         }
 
 
@@ -1502,8 +1513,8 @@ namespace TTS.Main
                         // Apply the saved theme
                         Dispatcher.Invoke(() =>
                         {
+                            // UpdateThemeSwitch already applies the theme; avoid duplicate ApplyTheme logs
                             UpdateThemeSwitch();
-                            ApplyTheme(GetThemeName(_themePosition));
                         });
                         
                         LogToConsole($"🎨 Loaded saved theme: {GetThemeName(_themePosition)}");
@@ -2167,10 +2178,20 @@ namespace TTS.Main
 
         #region Window Events
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LogToConsole("🚀 TTS Voice System V4.6 - OVERHAUL loaded");
-            LogToConsole("💫 Created by Emstar233 & Husband (V4.6)");
+            LogToConsole($"🚀 {_versionInfo.FullTitle} loaded");
+            LogToConsole("💫 Created by Emstar233 & Husband");
+
+            // Load any external mods/add-ons from data/*.dll (generic loader only)
+            try
+            {
+                await LoadExternalModsAsync();
+            }
+            catch (Exception ex)
+            {
+                LogToConsole($"❌ Failed to load external mods: {ex.Message}");
+            }
         }
 
         private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -2179,6 +2200,16 @@ namespace TTS.Main
             _userUpdateTimer?.Stop();
             _queueUpdateTimer?.Stop();
             
+            // Attempt graceful shutdown of external mods first
+            try
+            {
+                await ShutdownExternalModsAsync();
+            }
+            catch (Exception ex)
+            {
+                LogToConsole($"⚠️ Error shutting down external mods: {ex.Message}");
+            }
+
             if (_systemRunning)
             {
                 LogToConsole("🛑 Shutting down TTS system...");
@@ -2195,6 +2226,184 @@ namespace TTS.Main
         }
 
         #endregion
+
+        // External Mods/Add-ons
+        private readonly List<object> _loadedExternalMods = new();
+        private readonly List<(object Instance, MethodInfo? ShutdownMethod)> _externalModShutdowns = new();
+        private IModHost? _modHost;
+
+        private class ModHost : IModHost
+        {
+            private readonly MainWindow _owner;
+            public ModHost(MainWindow owner) { _owner = owner; }
+
+            public void Publish(string channel, string payload)
+            {
+                if (string.Equals(channel, "chat", StringComparison.OrdinalIgnoreCase))
+                {
+                    var processing = _owner._processingModule;
+                    if (processing != null)
+                    {
+                        _ = processing.ProcessExternalChatJson(payload);
+                    }
+                    // Also register user as active in user tracker immediately
+                    try
+                    {
+                        using var doc = System.Text.Json.JsonDocument.Parse(payload);
+                        if (doc.RootElement.TryGetProperty("data", out var data) &&
+                            data.TryGetProperty("nickname", out var nn) &&
+                            !string.IsNullOrWhiteSpace(nn.GetString()))
+                        {
+                            _owner._userTrackingModule?.RegisterActiveUser(nn.GetString()!);
+                        }
+                    }
+                    catch { }
+                }
+            }
+
+            public void SetFlag(string key, bool value)
+            {
+                if (string.Equals(key, "websocketSwitch", StringComparison.OrdinalIgnoreCase))
+                {
+                    var processing = _owner._processingModule;
+                    if (processing != null)
+                    {
+                        // value=true => disable websocket (off); false => enable (on)
+                        processing.SetWebSocketEnabled(!value);
+                    }
+                }
+            }
+
+            public object? GetService(string name)
+            {
+                if (string.Equals(name, "processing", StringComparison.OrdinalIgnoreCase))
+                    return _owner._processingModule;
+                return null;
+            }
+        }
+
+        private async Task LoadExternalModsAsync()
+        {
+            try
+            {
+                var baseDir = GetBaseDirectory();
+                var modsDir = Path.Combine(baseDir, "data");
+                if (!Directory.Exists(modsDir))
+                {
+                    Logger.Write($"[EXT] Mods directory not found: {modsDir}");
+                    return;
+                }
+
+                var dllFiles = Directory.GetFiles(modsDir, "*.dll", SearchOption.TopDirectoryOnly);
+                if (dllFiles.Length == 0)
+                {
+                    Logger.Write("[EXT] No external mods found in data folder");
+                    return;
+                }
+
+                Logger.Write($"[EXT] Scanning mods: {dllFiles.Length} dll(s) found");
+
+                foreach (var dllPath in dllFiles)
+                {
+                    try
+                    {
+                        var assembly = Assembly.LoadFrom(dllPath);
+                        foreach (var type in assembly.GetTypes())
+                        {
+                            if (!type.IsClass || type.IsAbstract) continue;
+
+                            // Look for InitializeAsync/Initialize with optional IModHost parameter
+                            var initAsyncWithHost = type.GetMethod("InitializeAsync", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, new Type[] { typeof(IModHost) }, null);
+                            var initWithHost = type.GetMethod("Initialize", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, new Type[] { typeof(IModHost) }, null);
+                            var initAsyncNoArg = type.GetMethod("InitializeAsync", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, Type.EmptyTypes, null);
+                            var initNoArg = type.GetMethod("Initialize", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, Type.EmptyTypes, null);
+                            if (initAsyncWithHost == null && initWithHost == null && initAsyncNoArg == null && initNoArg == null) continue;
+
+                            var instance = Activator.CreateInstance(type);
+                            if (instance == null) continue;
+
+                            // Provide host if requested
+                            _modHost ??= new ModHost(this);
+
+                            if (initAsyncWithHost != null)
+                            {
+                                var result = initAsyncWithHost.Invoke(instance, new object?[] { _modHost });
+                                if (result is Task task)
+                                {
+                                    await task;
+                                }
+                            }
+                            else if (initWithHost != null)
+                            {
+                                var result = initWithHost.Invoke(instance, new object?[] { _modHost });
+                                if (result is Task task)
+                                {
+                                    await task;
+                                }
+                            }
+                            else if (initAsyncNoArg != null)
+                            {
+                                var result = initAsyncNoArg.Invoke(instance, Array.Empty<object?>());
+                                if (result is Task task)
+                                {
+                                    await task;
+                                }
+                            }
+                            else if (initNoArg != null)
+                            {
+                                var result = initNoArg.Invoke(instance, Array.Empty<object?>());
+                                if (result is Task task)
+                                {
+                                    await task;
+                                }
+                            }
+
+                            _loadedExternalMods.Add(instance);
+
+                            // Discover shutdown method for later
+                            var shutdown = type.GetMethod("ShutdownAsync", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, Type.EmptyTypes, null)
+                                         ?? type.GetMethod("Shutdown", BindingFlags.Public | BindingFlags.Instance, Type.DefaultBinder, Type.EmptyTypes, null);
+                            _externalModShutdowns.Add((instance, shutdown));
+
+                            Logger.Write($"[EXT] Mod initialized from {Path.GetFileName(dllPath)} (type {type.FullName})");
+                        }
+                    }
+                    catch (ReflectionTypeLoadException rtle)
+                    {
+                        var loaderErrors = string.Join("; ", rtle.LoaderExceptions?.Select(ex => ex?.Message).Where(m => !string.IsNullOrWhiteSpace(m)) ?? Array.Empty<string>());
+                        Logger.Write($"[EXT] Failed to load '{Path.GetFileName(dllPath)}': {rtle.Message} ({loaderErrors})", level: "ERROR");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Write($"[EXT] Failed to load '{Path.GetFileName(dllPath)}': {ex.Message}", level: "ERROR");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Write($"[EXT] Mod scan failed: {ex.Message}", level: "ERROR");
+            }
+        }
+
+        private async Task ShutdownExternalModsAsync()
+        {
+            foreach (var (instance, shutdown) in _externalModShutdowns)
+            {
+                if (shutdown == null) continue;
+                try
+                {
+                    var result = shutdown.Invoke(instance, Array.Empty<object?>());
+                    if (result is Task task)
+                    {
+                        await task;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogToConsole($"⚠️ Mod shutdown error ({instance.GetType().FullName}): {ex.Message}");
+                }
+            }
+        }
 
         // Private fields for log tracking
         private DateTime _lastLogRead = DateTime.MinValue;

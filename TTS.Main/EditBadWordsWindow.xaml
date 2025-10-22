@@ -30,34 +30,42 @@
             </Grid.ColumnDefinitions>
             
             <!-- Left Side - Bad Words -->
-            <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                <TextBlock Text="Bad Words (one per line):" 
+            <Grid Grid.Column="0" Margin="0,0,5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Bad Words (one per line):" 
                            FontWeight="Bold" Foreground="{DynamicResource AppTextBrush}" 
                            Margin="0,0,0,5"/>
-                <TextBox x:Name="BadWordsTextBox" 
+                <TextBox Grid.Row="1" x:Name="BadWordsTextBox" 
                          AcceptsReturn="True" AcceptsTab="True"
                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                          FontFamily="Consolas" FontSize="12"
-                         Background="{DynamicResource AppInputBackgroundBrush}"
-                         Foreground="{DynamicResource AppTextBrush}"
+                         Background="{DynamicResource AppConsoleBackgroundBrush}"
+                         Foreground="{DynamicResource AppConsoleTextBrush}"
                          CaretBrush="{DynamicResource AppTextBrush}"
                          TextWrapping="NoWrap"/>
-            </StackPanel>
+            </Grid>
             
             <!-- Right Side - Reply Messages -->
-            <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                <TextBlock Text="Reply Messages (one per line):" 
+            <Grid Grid.Column="1" Margin="5,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Reply Messages (one per line):" 
                            FontWeight="Bold" Foreground="{DynamicResource AppTextBrush}" 
                            Margin="0,0,0,5"/>
-                <TextBox x:Name="ReplyMessagesTextBox" 
+                <TextBox Grid.Row="1" x:Name="ReplyMessagesTextBox" 
                          AcceptsReturn="True" AcceptsTab="True"
                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
                          FontFamily="Consolas" FontSize="12"
-                         Background="{DynamicResource AppInputBackgroundBrush}"
-                         Foreground="{DynamicResource AppTextBrush}"
+                         Background="{DynamicResource AppConsoleBackgroundBrush}"
+                         Foreground="{DynamicResource AppConsoleTextBrush}"
                          CaretBrush="{DynamicResource AppTextBrush}"
                          TextWrapping="NoWrap"/>
-            </StackPanel>
+            </Grid>
         </Grid>
         
         <!-- Buttons -->

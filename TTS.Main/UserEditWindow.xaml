@@ -72,30 +72,31 @@
                                                Margin="5" VerticalAlignment="Center" 
                                                FontWeight="Bold" Foreground="{DynamicResource AppTextBrush}"/>
                                     
-                                    <!-- Name Swap with overlay approach -->
+                                    <!-- Name Swap - raw textbox wrapped to guarantee solid white bg -->
                                     <Grid Grid.Column="1" Margin="2" Height="30">
-                                        <!-- TextBox at the bottom -->
                                         <TextBox Text="{Binding NameSwap, UpdateSourceTrigger=PropertyChanged}" 
-                                                 Background="Transparent" 
-                                                 Foreground="Transparent"
-                                                 BorderThickness="0" 
-                                                 Padding="5,5,5,5"
+                                                 Style="{x:Null}"
+                                                 Background="White" 
+                                                 Foreground="Black"
+                                                 BorderBrush="Gray"
+                                                 BorderThickness="1" 
+                                                 Padding="6,0,6,0"
+                                                 Height="30"
+                                                 VerticalContentAlignment="Center"
                                                  VerticalAlignment="Center"
-                                                 HorizontalAlignment="Stretch"/>
-                                        
-                                        <!-- White overlay on top -->
-                                        <Rectangle Fill="White" Stroke="{DynamicResource AppBorderBrush}" StrokeThickness="1" 
-                                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                                  IsHitTestVisible="False"/>
-                                        
-                                        <!-- Text overlay on top of everything -->
-                                        <TextBlock Text="{Binding NameSwap}" 
-                                                  Foreground="Black"
-                                                  VerticalAlignment="Center"
-                                                  HorizontalAlignment="Left"
-                                                  Margin="5,0,0,0"
-                                                  FontSize="12"
-                                                  IsHitTestVisible="False"/>
+                                                 HorizontalAlignment="Stretch"
+                                                 CaretBrush="Black">
+                                            <TextBox.Template>
+                                                <ControlTemplate TargetType="TextBox">
+                                                    <Border Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                                            Padding="{TemplateBinding Padding}">
+                                                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </TextBox.Template>
+                                        </TextBox>
                                     </Grid>
                                     
                                     <!-- Voice -->

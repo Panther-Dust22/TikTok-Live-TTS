@@ -30,6 +30,40 @@ namespace TTS.Main
             
             PopulateVoiceAndSpeedOptions();
             LoadUserData();
+
+            // Ensure editable text boxes render normally without overlays
+            this.Loaded += (s, e) =>
+            {
+                var textBoxes = FindVisualChildren<TextBox>(UserListItemsControl);
+                foreach (var tb in textBoxes)
+                {
+                    tb.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
+                    tb.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.White);
+                    tb.CaretBrush = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
+
+                    if (tb.Parent is Grid g)
+                    {
+                        foreach (var child in g.Children)
+                        {
+                            if (child is TextBlock)
+                            {
+                                ((TextBlock)child).Visibility = Visibility.Collapsed;
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj == null) yield break;
+            for (int i = 0; i < System.Windows.Media.VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = System.Windows.Media.VisualTreeHelper.GetChild(depObj, i);
+                if (child is T match) yield return match;
+                foreach (var c in FindVisualChildren<T>(child)) yield return c;
+            }
         }
 
         private void ApplyCurrentTheme()

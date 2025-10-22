@@ -128,7 +128,7 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Row 0 - Module Status Traffic Lights -->
-                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,2" HorizontalAlignment="Center">
+                <StackPanel x:Name="StatusLightsStackPanel" Grid.Row="0" Orientation="Horizontal" Margin="5,5,5,2" HorizontalAlignment="Center">
                     <TextBlock Text="Module Status:" Foreground="{DynamicResource AppTextBrush}" FontSize="12" FontWeight="Bold" 
                                VerticalAlignment="Center" Margin="0,0,10,0"/>
                     
@@ -226,17 +226,33 @@
                             <Grid Height="30">
                                 <!-- TextBox at the bottom -->
                                 <TextBox x:Name="NameSwapTextBox" 
-                                         Background="Transparent" 
-                                         Foreground="Transparent"
-                                         BorderThickness="0" 
-                                         Padding="5,5,5,5"
+                                         Style="{x:Null}"
+                                         Background="White" 
+                                         Foreground="Black"
+                                         CaretBrush="Black"
+                                         BorderBrush="Gray"
+                                         BorderThickness="1" 
+                                         Padding="6,0,6,0"
+                                         Height="30"
+                                         VerticalContentAlignment="Center"
                                          VerticalAlignment="Center"
-                                         HorizontalAlignment="Stretch"/>
+                                         HorizontalAlignment="Stretch">
+                                    <TextBox.Template>
+                                        <ControlTemplate TargetType="TextBox">
+                                            <Border Background="{TemplateBinding Background}"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Padding="{TemplateBinding Padding}">
+                                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
                                 
                                 <!-- White overlay on top -->
                                 <Rectangle Fill="White" Stroke="Gray" StrokeThickness="1" 
                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                          IsHitTestVisible="False"/>
+                                          IsHitTestVisible="False" Visibility="Collapsed"/>
                                 
                                 <!-- Text overlay on top of everything -->
                                 <TextBlock x:Name="NameSwapTextOverlay" 
@@ -246,7 +262,7 @@
                                           HorizontalAlignment="Left"
                                           Margin="5,0,0,0"
                                           FontSize="12"
-                                          IsHitTestVisible="False"/>
+                                          IsHitTestVisible="False" Visibility="Collapsed"/>
                             </Grid>
                         </StackPanel>
                         
