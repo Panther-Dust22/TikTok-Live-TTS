@@ -1,3 +1,7 @@
+Updates: V5.1.1  
+Voice list Hotfix, all 99 voices now work correctly  
+Just run the installer to update your system and voices
+
 Updates: V5.1  
 Fix scrolling for Bad words and reply list (no more limit)  
 Add NONE to specials list (so you can set catagorys like friends to not have a voice)  
